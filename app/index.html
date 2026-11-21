@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice Heat — GTA-style Cover Studio</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="brand">
+    <h1>VICE HEAT</h1>
+    <p class="tagline">Your photos become framed crime-epic key art — measured face pipeline, hero close-up, 8 grades, PNG in 3 sizes.</p>
+  </div>
+  <p id="status" role="status">Loading sample photos…</p>
+</header>
+
+<main>
+  <aside id="controls">
+    <section>
+      <h2>1 · Layout</h2>
+      <div id="layoutRow" class="btnrow"></div>
+    </section>
+    <section>
+      <h2>2 · Grade</h2>
+      <div id="gradeRow" class="btnrow"></div>
+    </section>
+    <section>
+      <h2>3 · Post size</h2>
+      <div id="sizeRow" class="btnrow"></div>
+    </section>
+    <section>
+      <h2>4 · Words &amp; fonts</h2>
+      <label>Title preset
+        <select id="presetSelect"></select>
+      </label>
+      <label>Title
+        <input id="titleInput" type="text" value="VICE HEAT" maxlength="24">
+      </label>
+      <label>Subtitle
+        <input id="subtitleInput" type="text" value="a Leonida story" maxlength="48">
+      </label>
+      <label>Tagline ribbon
+        <input id="taglineInput" type="text" value="ONE LAST JOB IN LEONIDA" maxlength="48">
+      </label>
+      <label>Review quote
+        <input id="quoteInput" type="text" value="The definitive Vice City poster" maxlength="64">
+      </label>
+      <label>Title font
+        <select id="titleFontSelect"></select>
+      </label>
+      <label>Script font
+        <select id="scriptFontSelect"></select>
+      </label>
+    </section>
+    <section>
+      <h2>5 · Photos</h2>
+      <p class="hint">Click a panel on the poster, then pick a photo for it — or drop / paste a photo anywhere on this page. Your photos are read on this machine and never uploaded.</p>
+      <div id="sampleStrip" class="samples"></div>
+      <label class="uploadBtn">Upload your photos
+        <input id="upload" type="file" accept="image/*" multiple hidden>
+      </label>
+      <p id="panelLabel" class="hint">No panel selected — click the poster to pick one.</p>
+      <div class="toolbar">
+        <button id="flipBtn" type="button">Flip</button>
+        <button id="prevPhotoBtn" type="button">◀ Photo</button>
+        <button id="nextPhotoBtn" type="button">Photo ▶</button>
+        <button id="resetBtn" type="button">Reset</button>
+        <button id="autofillBtn" type="button">Auto-fill</button>
+      </div>
+      <label>Zoom
+        <input id="zoomRange" type="range" min="1" max="2.5" step="0.05" value="1">
+      </label>
+      <label>Move sideways
+        <input id="nudgeX" type="range" min="-1" max="1" step="0.05" value="0">
+      </label>
+      <label>Move up / down
+        <input id="nudgeY" type="range" min="-1" max="1" step="0.05" value="0">
+      </label>
+    </section>
+    <section>
+      <h2>6 · Face Lab</h2>
+      <label class="check"><input id="overlayToggle" type="checkbox"> Show face boxes + scores on the poster</label>
+      <div id="faceLab"></div>
+    </section>
+    <section class="actions">
+      <button id="autoBtn" type="button">Auto Poster</button>
+      <button id="undoBtn" type="button">Undo</button>
+      <button id="redoBtn" type="button">Redo</button>
+      <button id="exportBtn" type="button" class="primary">Export PNG</button>
+      <button id="exportAllBtn" type="button">Export all 3 sizes</button>
+    </section>
+    <p class="fineprint">Original art and lettering (Anton, Bebas Neue, Pacifico &amp; Sacramento, SIL Open Font License). Sample photos: Unsplash and the make.fun kit. No Rockstar Games logo, artwork or font.</p>
+  </aside>
+
+  <section id="stage">
+    <canvas id="poster" width="960" height="540"></canvas>
+    <p class="hint">Live preview — exactly what the PNG will look like. Click a panel to crop it.</p>
+    <div class="minis">
+      <figure><canvas id="miniWide" width="192" height="108"></canvas><figcaption>16:9 · 1920×1080</figcaption></figure>
+      <figure><canvas id="miniPortrait" width="144" height="180"></canvas><figcaption>4:5 · 1080×1350</figcaption></figure>
+      <figure><canvas id="miniSquare" width="160" height="160"></canvas><figcaption>1:1 · 1080×1080</figcaption></figure>
+    </div>
+  </section>
+</main>
+
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
